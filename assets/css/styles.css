@@ -1,0 +1,99 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+#root {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  font-family: 'Cascadia Code';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header {
+  margin: 0;
+  padding: 1rem;
+  min-width: auto;
+  min-height: auto;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  margin-bottom: 5em;
+}
+main {
+  padding: 0;
+  margin: 0;
+  margin-top: 5vh;
+  width: 60%;
+  height: 60%;
+  background-color: #60f;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 50px;
+}
+section {
+  min-width: 70%;
+  max-width: 70%;
+  background-color: goldenrod;
+  height: auto;
+  border-radius: 50px;
+  padding: 2% 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+input,
+p,
+h2 {
+  margin: 10px 0;
+}
+input {
+  size: 60px;
+}
+footer {
+  padding: 2vh;
+  margin: 0;
+  min-width: auto;
+  min-height: auto;
+  position: fixed;
+  bottom: 0;
+  font-size: 1.5em;
+}
+.emoji {
+  font-size: 90px;
+}
+#hi {
+  font-size: 30px !important;
+}
+img {
+  width: 32px;
+}
+a {
+  font-family: 'Montserrat';
+  color: #f36;
+  text-decoration-style: none !important;
+  text-decoration-thickness: unset !important;
+}
+@media (max-width: 980px) {
+  main {
+    margin-top: 10vh;
+    width: 70%;
+    height: 70%;
+  }
+  section {
+    min-width: 80%;
+  }
+  input {
+    max-width: 80%;
+  }
+}
