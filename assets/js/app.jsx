@@ -139,7 +139,7 @@ const AtmLayout = () => {
       <footer>
         Made with ❤️ by{' '}
         <a href='https://soydanielromero.github.io'>
-          <img src='../../../img/favicon.png' alt='Logo Daniel Romero'></img>
+          <img src='./assets/img/favicon.png' alt='Logo Daniel Romero'></img>
         </a>{' '}
         <a href='https://soydanielromero.github.io'>
           Daniel <strong>Romero</strong>
