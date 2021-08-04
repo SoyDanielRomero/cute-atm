@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 html,
 body {
   margin: 0;
@@ -9,7 +11,7 @@ body {
   width: 100vw;
   margin: 0;
   padding: 0;
-  font-family: 'Cascadia Code';
+  font-family: 'Cascadia Code', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,7 +83,7 @@ img {
   width: 32px;
 }
 a {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   color: #f36;
   text-decoration-style: none !important;
   text-decoration-thickness: unset !important;
@@ -93,7 +95,7 @@ a:hover {
   main {
     margin-top: 10vh;
     width: 70%;
-    max-height: 70%;
+    max-height: 60%;
   }
   section {
     min-width: 80%;

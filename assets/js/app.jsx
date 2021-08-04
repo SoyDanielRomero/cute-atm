@@ -30,8 +30,6 @@ const ATMDeposit = ({ onChange, isDeposit, isValid }) => {
   );
 };
 
-const hearts = [];
-
 const Atm = () => {
   const [deposit, setDeposit] = React.useState(0);
   const [totalState, setTotalState] = React.useState(0);
@@ -42,7 +40,7 @@ const Atm = () => {
   let status = `💎's Balance ${totalState} `;
 
   const handleChange = (event) => {
-    if (event.target.value <= 0) {
+    if (event.target.value < 0) {
       setValidTransaction(false);
       alert(
         'When your Balance is 0 You have to Withdraw or Deposit more than 0'
@@ -60,7 +58,7 @@ const Atm = () => {
         'Your maximum Withdrawal is: ' +
           totalState +
           ' ' +
-          heart +
+          diamond +
           "'s You can't Withdraw more than what you have deposited"
       );
       event.target.value = totalState;
@@ -87,10 +85,10 @@ const Atm = () => {
         setAtmMode(setIsDeposit(false));
     }
   };
-  const heart = '❤️';
-  console.log(totalState);
+  const diamond = '💎';
+  const diamonds = [];
   for (let i = 0; i < totalState; i++) {
-    hearts.push(heart);
+    diamonds.push(diamond);
   }
   return (
     <form onSubmit={handleSubmit}>
