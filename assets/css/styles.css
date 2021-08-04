@@ -93,7 +93,7 @@ a:hover {
   main {
     margin-top: 10vh;
     width: 70%;
-    height: 70%;
+    max-height: 70%;
   }
   section {
     min-width: 80%;
