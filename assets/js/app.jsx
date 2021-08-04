@@ -39,7 +39,7 @@ const Atm = () => {
   const [atmMode, setAtmMode] = React.useState(['', 'Deposit', 'Cash Back']);
   const [validTransaction, setValidTransaction] = React.useState(false);
 
-  let status = `❤️'s Balance ${totalState} `;
+  let status = `💎's Balance ${totalState} `;
 
   const handleChange = (event) => {
     if (event.target.value <= 0) {
@@ -123,7 +123,7 @@ const AtmLayout = () => {
   return (
     <>
       <header>
-        <h1>Hearth's ATM</h1>
+        <h1>{'💎'}'s ATM</h1>
         <p>
           Welcome! <Emoji symbol='👋' label='hello' id='hi' /> This is a coding
           exercise
@@ -132,7 +132,7 @@ const AtmLayout = () => {
       <main>
         <section>
           <Emoji symbol='🏧' label='atm'></Emoji>
-          <br />
+          {/* <br /> */}
           <Atm />
         </section>
       </main>
