@@ -40,18 +40,17 @@ const Atm = () => {
   let status = `💎's Balance ${totalState} `;
 
   const handleChange = (event) => {
-    if (event.target.value < 0) {
+    let ammount = event.target.value;
+    if (ammount < 0) {
       setValidTransaction(false);
       alert(
         'When your Balance is 0 You have to Withdraw or Deposit more than 0'
       );
-      event.target.value = 0;
+      ammount = 0;
       setValidTransaction(true);
     } else if (
-      (document.getElementById('mode-select').value === 'Cash Back' &&
-        event.target.value > totalState) ||
-      (event.target.value > totalState &&
-        document.getElementById('mode-select').value === 'Cash Back')
+      (ammount > totalState && !isDeposit) ||
+      (!isDeposit && ammount > totalState)
     ) {
       setValidTransaction(false);
       alert(
@@ -61,10 +60,10 @@ const Atm = () => {
           diamond +
           "'s You can't Withdraw more than what you have deposited"
       );
-      event.target.value = totalState;
+      ammount = totalState;
       setValidTransaction(true);
     } else {
-      setDeposit(Number(event.target.value));
+      setDeposit(Number(ammount));
       setValidTransaction(true);
       event.preventDefault();
     }
