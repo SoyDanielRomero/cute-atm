@@ -1,4 +1,4 @@
-# Holy Grail Layout React App 👨‍💻
+# Cute ATM React App 👨‍💻
 
 This exercise is developed during the course at Mit xPro to get a certificate as a Profesional Full Stack Developer. It consists of creating a simple ATM App with React and Babel to get more knowledge about CRUD, useStates, and other React properties.
 
