@@ -11,7 +11,6 @@ const Emoji = (props) => (
 
 const ATMDeposit = ({ onChange, isDeposit, isValid }) => {
   const choice = ['Deposit', 'Cash Back'];
-  console.log(`ATM isDeposit: ${isDeposit}`);
   event.preventDefault();
   return (
     <label className='label huge'>

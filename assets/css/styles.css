@@ -53,13 +53,14 @@ section {
   text-align: center;
   color: white;
 }
-input,
+/* input, */
 p,
 h2 {
   margin: 10px 0;
 }
 input {
-  min-width: 60%;
+  max-width: 60%;
+  min-width: 40%;
   text-align: center;
 }
 footer {
