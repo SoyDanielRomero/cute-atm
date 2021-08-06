@@ -103,6 +103,11 @@ select {
   color: white;
   border-radius: 30px;
 }
+.btn:hover {
+  background-color: white;
+  color: #60f;
+  border: 2px solid #60f;
+}
 select {
   padding: 1px 30px;
 }
