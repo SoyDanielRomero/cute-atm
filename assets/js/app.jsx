@@ -8,113 +8,131 @@ const Emoji = (props) => (
     {props.symbol}
   </span>
 );
+const diamond = '💎';
 
-const ATMDeposit = ({ onChange, isDeposit, isValid }) => {
-  const choice = ['Deposit', 'Cash Back'];
+const Operation = (valid) => {
   event.preventDefault();
   return (
-    <label className='label huge'>
-      <input
-        id='number-input'
-        type='number'
-        width='200'
-        onChange={onChange}></input>
+    <>
+      <input id='number-input' type='number' width='200' defaultValue='1' />
       <input
         type='submit'
-        width='200'
         value='Submit'
         id='submit-input'
-        disabled={!isValid}></input>
-    </label>
+        disabled={!valid}
+        className='btn'
+      />
+    </>
   );
 };
 
 const Atm = () => {
-  const [deposit, setDeposit] = React.useState(0);
-  const [totalState, setTotalState] = React.useState(0);
-  const [isDeposit, setIsDeposit] = React.useState(true);
-  const [atmMode, setAtmMode] = React.useState(['', 'Deposit', 'Cash Back']);
-  const [validTransaction, setValidTransaction] = React.useState(false);
+  const [transaction, setTransaction] = React.useState(0);
+  const [account, setAccount] = React.useState(0);
+  const [operationType, setOperationType] = React.useState(true);
+  const [valid, setValid] = React.useState(false);
 
-  let status = `💎's Balance ${totalState} `;
+  let accountStatus = `💎's Balance ${account}`;
 
-  const handleChange = (event) => {
-    let ammount = event.target.value;
-    if (ammount < 0) {
-      setValidTransaction(false);
-      alert(
-        'When your Balance is 0 You have to Withdraw or Deposit more than 0'
-      );
-      ammount = 0;
-      setValidTransaction(true);
+  const handleChange = (formChangeEvent) => {
+    // user input a value 0 or below
+    if (Number(document.getElementById('number-input').value) <= 0) {
+      alert("You can't make operations with value 0");
+      document.getElementById('number-input').value = 1;
+      setValid(true);
+      document.getElementById('mode-select').options[0];
     } else if (
-      (ammount > totalState && !isDeposit) ||
-      (!isDeposit && ammount > totalState)
+      Number(document.getElementById('number-input').value) > account &&
+      !operationType
     ) {
-      setValidTransaction(false);
+      setValid(false);
       alert(
-        'Your maximum Withdrawal is: ' +
-          totalState +
+        'Your maximum Withdrawal is: one ' +
+          account +
           ' ' +
           diamond +
           "'s You can't Withdraw more than what you have deposited"
       );
-      ammount = totalState;
-      setValidTransaction(true);
+      document.getElementById('number-input').value = account;
+      setValid(true);
     } else {
-      setDeposit(Number(ammount));
-      setValidTransaction(true);
-      event.preventDefault();
+      setTransaction(Number(document.getElementById('number-input').value));
+      setValid(true);
+      formChangeEvent.preventDefault();
     }
   };
+
   const handleSubmit = (event) => {
-    let newTotal = isDeposit ? totalState + deposit : totalState - deposit;
-    setTotalState(newTotal);
+    if (
+      !operationType &&
+      Number(document.getElementById('number-input').value) > account
+    ) {
+      setValid(false);
+      alert(
+        'Your maximum Withdrawal is: two ' +
+          account +
+          ' ' +
+          diamond +
+          "'s You can't Withdraw more than what you have deposited"
+      );
+      document.getElementById('number-input').value = Number(account);
+      setTransaction(Number(account));
+      setValid(true);
+    } else {
+      let newAccountBalance = operationType
+        ? account + transaction
+        : account - transaction;
+      setAccount(Number(newAccountBalance));
+      if (newAccountBalance === 0) {
+        window.location.reload();
+      }
+    }
+
     event.preventDefault();
   };
+
   const handleModeSelect = (event) => {
     let option = event.target.value;
 
     switch (option) {
       case 'Deposit':
-        setAtmMode(setIsDeposit(true));
+        setOperationType(true);
         break;
       case 'Cash Back':
-        setAtmMode(setIsDeposit(false));
+        setOperationType(false);
+
+        break;
     }
   };
-  const diamond = '💎';
-  const diamonds = [];
-  for (let i = 0; i < totalState; i++) {
-    diamonds.push(diamond);
-  }
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h2 id='total'>{status}</h2>
-      <label>Select an action below to continue</label>
-      <br />
-      <select
-        onChange={(e) => handleModeSelect(e)}
-        name='mode'
-        id='mode-select'>
-        <option id='no-selection' value=''></option>
-        <option id='deposit-selection' value='Deposit'>
-          Deposit
-        </option>
-        <option id='cashback-selection' value='Cash Back'>
-          Cash Back
-        </option>
-      </select>
-      <br />
-      {atmMode == null && (
-        <ATMDeposit
-          onChange={handleChange}
-          isDeposit={isDeposit}
-          isValid={validTransaction}></ATMDeposit>
-      )}
-    </form>
+    <>
+      <form onChange={handleChange} onSubmit={handleSubmit}>
+        {/*account total*/}
+        <h2>{accountStatus}</h2>
+        <label>Select an action below to continue</label>
+        <br />
+        <select
+          onChange={(e) => handleModeSelect(e)}
+          name='mode'
+          id='mode-select'>
+          <option
+            id='deposit-selection'
+            value='Deposit'
+            defaultValue='selected'>
+            Deposit
+          </option>
+          <option id='cashback-selection' value='Cash Back'>
+            Cash Back
+          </option>
+        </select>
+        <br />
+        <Operation operation={operationType} valid={valid}></Operation>
+      </form>
+    </>
   );
 };
+
 const AtmLayout = () => {
   return (
     <>
@@ -128,7 +146,6 @@ const AtmLayout = () => {
       <main>
         <section>
           <Emoji symbol='🏧' label='atm'></Emoji>
-          {/* <br /> */}
           <Atm />
         </section>
       </main>

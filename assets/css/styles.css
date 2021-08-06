@@ -53,10 +53,11 @@ section {
   text-align: center;
   color: white;
 }
-/* input, */
+input,
+select,
 p,
 h2 {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 input {
   max-width: 60%;
@@ -89,6 +90,19 @@ a {
 }
 a:hover {
   color: #60f;
+}
+input,
+select {
+  border: none;
+  border-radius: 10px;
+}
+.btn {
+  background-color: #60f;
+  color: white;
+  border-radius: 30px;
+}
+select {
+  padding: 1px 30px;
 }
 @media (max-width: 980px) {
   main {
