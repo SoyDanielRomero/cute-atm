@@ -15,6 +15,7 @@ const Operation = (valid) => {
   return (
     <>
       <input id='number-input' type='number' width='200' defaultValue='1' />
+      <br />
       <input
         type='submit'
         value='Submit'
