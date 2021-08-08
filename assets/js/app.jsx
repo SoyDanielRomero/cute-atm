@@ -105,11 +105,10 @@ const Atm = () => {
         break;
     }
   };
-
   return (
     <>
       <form onChange={handleChange} onSubmit={handleSubmit}>
-        {/*account total*/}
+        {/* account total */}
         <h2>{accountStatus}</h2>
         <label>Select an action below to continue</label>
         <br />
